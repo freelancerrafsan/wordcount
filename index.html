@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Rendom Code</title>
+        <script src="https://kit.fontawesome.com/8292d0f494.js" crossorigin="anonymous"></script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap");
+            * {
+                margin: 0%;
+                padding: 0%;
+                box-sizing: border-box;
+                background: rgb(192, 192, 192);
+            }
+            body {
+                display: grid;
+                place-items: center;
+                height: 100vh;
+            }
+            .content {
+                height: 180px;
+                width: 350px;
+                background: rgba(255, 255, 255, 0.164);
+                box-shadow: -1px -1px 3px rgba(0, 0, 0, 0.473), 2px 2px 3px #fff;
+                border-radius: 10px;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                flex-direction: column;
+            }
+            p {
+                background-color: transparent;
+                font-family: "Montserrat", sans-serif;
+                font-size: 16px;
+                text-transform: capitalize;
+            }
+            input {
+                height: 40px;
+                width: 80%;
+                background: rgba(255, 255, 255, 0);
+                border: none;
+                outline: none;
+                box-shadow: inset -1px -1px 3px rgba(0, 0, 0, 0.473),
+                    inset 3px 3px 5px rgba(255, 255, 255, 0.5);
+                padding: 0px 20px;
+                font-size: 20px;
+                text-align: center;
+                user-select: none;
+            }
+            .btn {
+                width: 100%;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                background: none;
+            }
+            button {
+                height: 40px;
+                width: 35%;
+                border: none;
+                background: transparent;
+                outline: none;
+                box-shadow: -1px -1px 3px rgba(0, 0, 0, 0.473), 2px 2px 3px #fff;
+                border-radius: 30px;
+                cursor: pointer;
+                font-family: "Montserrat", sans-serif;
+                text-transform: uppercase;
+                font-weight: bold;
+                letter-spacing: 1px;
+                transition: 1s;
+                user-select: none;
+            }
+            button:hover {
+                box-shadow: none;
+                transform: scale(0.95);
+                box-shadow: inset -1px -1px 3px rgba(0, 0, 0, 0.473),
+                    inset 3px 3px 5px rgba(255, 255, 255, 0.5);
+            }
+            i {
+                margin-right: 7px;
+                background: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            <input id="textBox" type="text" />
+            <p>
+                letter Count <samp id="letterCount"> 0 </samp> word Count
+                <samp id="wordCount"> 0 </samp>
+            </p>
+            <div class="btn">
+                <button id="reset"><i class="fa-solid fa-arrow-rotate-left"></i>Reset</button>
+            </div>
+        </div>
+
+        <script>
+            const textBox = document.getElementById("textBox");
+            const letterCount = document.getElementById("letterCount");
+            const wordCount = document.getElementById("wordCount");
+            const p = document.querySelector("p");
+            const reset = document.getElementById("reset");
+
+            textBox.addEventListener("input", () => {
+                let textValue = textBox.value;
+                let latter = textValue.length;
+                letterCount.innerHTML = `${latter}`;
+
+                textValue = textValue.trim();
+                let wordBrack = textValue.split(" ");
+                let word = wordBrack.length;
+                wordCount.innerHTML = `${word}`;
+            });
+
+            reset.addEventListener("click", () => {
+                textBox.value = "";
+                letterCount.innerHTML = "0";
+                wordCount.innerHTML = "0";
+            });
+        </script>
+    </body>
+</html>
